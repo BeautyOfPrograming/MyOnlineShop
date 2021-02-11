@@ -31,6 +31,10 @@ android {
     }
 }
 
+
+
+//apply plugin: 'com.google.gms.google-services'
+
 dependencies {
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
@@ -44,5 +48,3 @@ dependencies {
 
     implementation platform('com.google.firebase:firebase-bom:26.4.0')
 }
-
-apply plugin: 'com.google.gms.google-services'

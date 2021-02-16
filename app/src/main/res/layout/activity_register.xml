@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/register"
+    tools:context=".RegisterActivity">
+
+
+    <ImageView
+        android:id="@+id/app_logo"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/applogo"
+
+        />
+
+
+    <EditText
+        android:id="@+id/register_username_input"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_below="@+id/app_logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/sign_up_style"
+        android:inputType="text"
+        android:paddingLeft="15dp"
+        android:hint="Name"
+        android:textColorHint="@color/colorPrimary"
+        android:textColor="@color/colorPrimary" />
+
+
+    <EditText
+        android:id="@+id/register_phone_input"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_below="@+id/register_username_input"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/sign_up_style"
+        android:inputType="number"
+        android:paddingLeft="15dp"
+        android:hint="phone number"
+        android:textColorHint="@color/colorPrimary"
+        android:textColor="@color/colorPrimary" />
+
+
+    <EditText
+        android:id="@+id/rgister_user_password"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_below="@+id/register_phone_input"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/sign_up_style"
+        android:inputType="text"
+        android:paddingLeft="15dp"
+        android:hint="Your password"
+        android:textColorHint="@color/colorPrimary"
+        android:textColor="@color/colorPrimary" />
+
+
+    <Button
+        android:id="@+id/sign_up_now_btn"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rgister_user_password"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="55dp"
+        android:layout_centerInParent="true"
+        android:padding="15dp"
+        android:text="Create" />
+
+
+
+</RelativeLayout>

@@ -29,7 +29,7 @@
         android:background="@drawable/sign_up_style"
         android:inputType="number"
         android:paddingLeft="15dp"
-        android:text="Pone Number"
+        android:hint="Pone Number"
         android:textColor="@color/colorPrimary" />
 
 
@@ -42,7 +42,7 @@
         android:background="@drawable/sign_up_style"
         android:inputType="number"
         android:paddingLeft="15dp"
-        android:text="Your password"
+        android:hint="Your password"
         android:textColor="@color/colorPrimary" />
 
 

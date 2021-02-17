@@ -110,9 +110,15 @@ public class LoginActivity extends AppCompatActivity {
                             Toast.makeText(LoginActivity.this, "Loged in successfully...", Toast.LENGTH_SHORT).show();
                             loading.dismiss();
 
-                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            Intent intent = new Intent(LoginActivity.this, Home.class);
 
                             startActivity(intent);
+
+                        }
+                        else {
+
+                            loading.dismiss();
+                            Toast.makeText(LoginActivity.this, "The phone or password is incorrect... ", Toast.LENGTH_SHORT).show();
 
                         }
                     }

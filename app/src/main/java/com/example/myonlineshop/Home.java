@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import io.paperdb.Paper;
+
 public class Home extends AppCompatActivity {
 
     Button logOut;
@@ -20,6 +22,8 @@ public class Home extends AppCompatActivity {
         logOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                Paper.book().destroy();
 
                 Intent intent = new Intent(Home.this, MainActivity.class);
 

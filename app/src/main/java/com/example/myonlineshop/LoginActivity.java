@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.icu.util.LocaleData;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -13,11 +14,16 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.myonlineshop.model.Users;
+import com.example.myonlineshop.prevelant.Prevelant;
+import com.google.android.gms.dynamic.IFragmentWrapper;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.rey.material.widget.CheckBox;
+
+import io.paperdb.Paper;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -31,6 +37,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private String parentDnName = "Users";
 
+    CheckBox checkBox;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +48,11 @@ public class LoginActivity extends AppCompatActivity {
 
         inputPhone = findViewById(R.id.app_phone_number);
         inputPass = findViewById(R.id.app_password);
+
+        checkBox =findViewById(R.id.app_checkbox);
+
+        Paper.init(getApplicationContext());
+
 
 
         loading = new ProgressDialog(LoginActivity.this);
@@ -88,6 +100,12 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void allowAccessToaccount(String phone, String password) {
+
+        if (checkBox.isChecked()){
+
+           Paper.book().write(Prevelant.userPhone,phone);
+           Paper.book().write(Prevelant.userPassword,password);
+        }
 
         final DatabaseReference databaseReference;
 

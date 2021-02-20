@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.icu.util.LocaleData;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -16,7 +15,6 @@ import android.widget.Toast;
 
 import com.example.myonlineshop.model.Users;
 import com.example.myonlineshop.prevelant.Prevelant;
-import com.google.android.gms.dynamic.IFragmentWrapper;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -160,7 +158,7 @@ public class LoginActivity extends AppCompatActivity {
                                 Toast.makeText(LoginActivity.this, "welcome admin Loged in successfully...", Toast.LENGTH_SHORT).show();
                                 loading.dismiss();
 
-                                Intent intent = new Intent(LoginActivity.this, AdminPanel.class);
+                                Intent intent = new Intent(LoginActivity.this, AdminAddNewProductActivity.class);
 
                                 startActivity(intent);
 

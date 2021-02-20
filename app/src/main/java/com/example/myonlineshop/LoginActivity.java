@@ -11,6 +11,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myonlineshop.model.Users;
@@ -30,14 +31,16 @@ public class LoginActivity extends AppCompatActivity {
 
     Button btnSingin;
 
+    TextView admin, notadmin;
 
     EditText inputPhone;
     EditText inputPass;
     ProgressDialog loading;
 
-    private String parentDnName = "Users";
+    private static String parentDnName = "Users";
 
     CheckBox checkBox;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,14 +52,40 @@ public class LoginActivity extends AppCompatActivity {
         inputPhone = findViewById(R.id.app_phone_number);
         inputPass = findViewById(R.id.app_password);
 
-        checkBox =findViewById(R.id.app_checkbox);
+        checkBox = findViewById(R.id.app_checkbox);
+
+        admin = findViewById(R.id.app_admin);
+        notadmin = findViewById(R.id.app_not_admin);
 
         Paper.init(getApplicationContext());
 
 
-
         loading = new ProgressDialog(LoginActivity.this);
 
+
+        admin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                btnSingin.setText("Admin Log in");
+                admin.setVisibility(View.GONE);
+                notadmin.setVisibility(View.VISIBLE);
+
+                parentDnName = "Admins";
+            }
+        });
+
+        notadmin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                btnSingin.setText("Log in");
+                admin.setVisibility(View.VISIBLE);
+                notadmin.setVisibility(View.GONE);
+                parentDnName = "Users";
+
+            }
+        });
 
         btnSingin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,10 +130,10 @@ public class LoginActivity extends AppCompatActivity {
 
     private void allowAccessToaccount(String phone, String password) {
 
-        if (checkBox.isChecked()){
+        if (checkBox.isChecked()) {
 
-           Paper.book().write(Prevelant.userPhone,phone);
-           Paper.book().write(Prevelant.userPassword,password);
+            Paper.book().write(Prevelant.userPhone, phone);
+            Paper.book().write(Prevelant.userPassword, password);
         }
 
         final DatabaseReference databaseReference;
@@ -125,25 +154,39 @@ public class LoginActivity extends AppCompatActivity {
 
                         if (users.getPass().equals(password)) {
 
-                            Toast.makeText(LoginActivity.this, "Loged in successfully...", Toast.LENGTH_SHORT).show();
-                            loading.dismiss();
+                            if (parentDnName.equals("Admins")) {
 
-                            Intent intent = new Intent(LoginActivity.this, Home.class);
 
-                            startActivity(intent);
+                                Toast.makeText(LoginActivity.this, "welcome admin Loged in successfully...", Toast.LENGTH_SHORT).show();
+                                loading.dismiss();
 
-                        }
-                        else {
+                                Intent intent = new Intent(LoginActivity.this, AdminPanel.class);
+
+                                startActivity(intent);
+
+                            } else if (parentDnName.equals("Users")) {
+
+
+                                Toast.makeText(LoginActivity.this, "Loged in successfully...", Toast.LENGTH_SHORT).show();
+                                loading.dismiss();
+
+                                Intent intent = new Intent(LoginActivity.this, Home.class);
+
+                                startActivity(intent);
+
+                            }
+
+
+                        } else {
 
                             loading.dismiss();
                             Toast.makeText(LoginActivity.this, "The phone or password is incorrect... ", Toast.LENGTH_SHORT).show();
 
                         }
                     }
-                }
-                else{
-                    Toast.makeText(LoginActivity.this, "failed Loged in successfully...", Toast.LENGTH_SHORT).show();
-                       loading.dismiss();
+                } else {
+                    Toast.makeText(LoginActivity.this, "failed Loged in ...", Toast.LENGTH_SHORT).show();
+                    loading.dismiss();
                 }
             }
 

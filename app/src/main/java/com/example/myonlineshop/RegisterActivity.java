@@ -110,7 +110,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                     HashMap<String, Object> userdataMap = new HashMap<>();
                     userdataMap.put("user", name);
-                    userdataMap.put("phone", password);
+                    userdataMap.put("phone", phone);
                     userdataMap.put("pass", password);
 
                     databaseReference.child("Users").child(phone).updateChildren(userdataMap).addOnCompleteListener(new OnCompleteListener<Void>() {

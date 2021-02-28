@@ -117,7 +117,7 @@ public class MainActivity  extends AppCompatActivity {
                             Toast.makeText(MainActivity.this, "Loged in successfully...", Toast.LENGTH_SHORT).show();
                             loading.dismiss();
 
-                            Intent intent = new Intent(MainActivity.this, Home.class);
+                            Intent intent = new Intent(MainActivity.this, HomeActivity.class);
 
                             startActivity(intent);
 

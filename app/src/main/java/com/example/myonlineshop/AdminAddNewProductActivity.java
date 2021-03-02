@@ -36,6 +36,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
     private Uri imageUri;
     private String category, saveCurrentlyDate, saveCurrentlyTime;
 
+    private String description, name, price;
 
     private Button AddNewProductButton;
     private ImageView InputProductImage;
@@ -52,6 +53,10 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_panel);
 
+        category = getIntent().getExtras().get("category").toString();
+
+        ProductImagesRef = FirebaseStorage.getInstance().getReference().child("Product Image");
+        ProductsRef = FirebaseDatabase.getInstance().getReference().child("Products");
 
         loading = new ProgressDialog(AdminAddNewProductActivity.this);
 
@@ -65,6 +70,8 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
         InputProductImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                Toast.makeText(AdminAddNewProductActivity.this, "get image", Toast.LENGTH_SHORT).show();
                 insertGalleryImage();
             }
         });
@@ -77,19 +84,15 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
             }
         });
 
-        category = getIntent().getExtras().get("category").toString();
 
-        ProductImagesRef = FirebaseStorage.getInstance().getReference().child("Product Image");
-        ProductsRef = FirebaseDatabase.getInstance().getReference().child("Products");
 
-        Toast.makeText(this, "welcome admin", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "welcome admin" + category, Toast.LENGTH_SHORT).show();
 
 
     }
 
     private void ValidateProduct() {
 
-        String description, name, price;
 
         description = InputProductDescription.getText().toString();
         name = InputProductName.getText().toString();
@@ -171,7 +174,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
                 }).addOnCompleteListener(new OnCompleteListener<Uri>() {
                     @Override
                     public void onComplete(@NonNull Task<Uri> task) {
-                        if(task.isSuccessful()){
+                        if (task.isSuccessful()) {
 
                             downloadImageUrl = task.getResult().toString();
                             Toast.makeText(AdminAddNewProductActivity.this, "getting product image Uri successfully", Toast.LENGTH_SHORT).show();
@@ -195,11 +198,11 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
         productMap.put("pid", productUniqueKey);
         productMap.put("date", saveCurrentlyDate);
         productMap.put("time", saveCurrentlyTime);
-        productMap.put("description", InputProductDescription);
+        productMap.put("description", description);
         productMap.put("image", downloadImageUrl);
         productMap.put("category", category);
-        productMap.put("price", InputProductPrice);
-        productMap.put("pname", InputProductName);
+        productMap.put("price", price);
+        productMap.put("pname", name);
 
         ProductsRef.child(productUniqueKey).updateChildren(productMap)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {

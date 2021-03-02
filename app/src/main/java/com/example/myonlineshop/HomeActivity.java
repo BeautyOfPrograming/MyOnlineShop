@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.widget.TextView;
 
 import com.example.myonlineshop.prevelant.Prevelant;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -87,7 +88,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     protected void onStart() {
         super.onStart();
 
-        
+//        FirebaseRecyclerAdapter
 
     }
 

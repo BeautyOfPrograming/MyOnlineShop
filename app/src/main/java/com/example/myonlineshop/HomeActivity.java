@@ -3,16 +3,23 @@ package com.example.myonlineshop;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.myonlineshop.model.Products;
 import com.example.myonlineshop.prevelant.Prevelant;
+import com.example.myonlineshop.viewHolder.productViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -31,11 +38,15 @@ import io.paperdb.Paper;
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private AppBarConfiguration mAppBarConfiguration;
+    public DatabaseReference productReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+
+        productReference = FirebaseDatabase.getInstance().getReference().child("Products");
 
         Paper.init(this);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -88,7 +99,33 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     protected void onStart() {
         super.onStart();
 
-//        FirebaseRecyclerAdapter
+        FirebaseRecyclerOptions<Products> options = new FirebaseRecyclerOptions.Builder<Products>()
+                .setQuery(productReference, Products.class)
+                .build();
+
+
+              FirebaseRecyclerAdapter<Products, productViewHolder> adapter = new FirebaseRecyclerAdapter<Products, productViewHolder>(options) {
+                  @Override
+                  protected void onBindViewHolder(@NonNull productViewHolder holder, int position, @NonNull Products model) {
+
+
+                      holder.txtProductPrice.setText(model.getPname());
+                      holder.txtProductDescription.setText(model.getDescription());
+                      holder.txtProductPrice.setText(model.getPrice());
+                  }
+
+                  @NonNull
+                  @Override
+                  public productViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
+                      View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_items_layout,parent,false);
+
+                      productViewHolder holder =  new productViewHolder(view);
+
+
+                      return holder;
+                  }
+              };
 
     }
 

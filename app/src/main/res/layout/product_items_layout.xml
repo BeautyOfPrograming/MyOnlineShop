@@ -34,6 +34,15 @@
         android:textAlignment="center"
         android:textColor="@color/colorPrimary"
         app:layout_constraintTop_toBottomOf="@id/product_item_image" />
+    <TextView
+        android:id="@+id/product_item_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="price"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintTop_toBottomOf="@id/product_item_description" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

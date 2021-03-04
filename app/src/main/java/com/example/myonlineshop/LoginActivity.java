@@ -152,6 +152,7 @@ public class LoginActivity extends AppCompatActivity {
 
                         if (users.getPass().equals(password)) {
 
+
                             if (parentDnName.equals("Admins")) {
 
 

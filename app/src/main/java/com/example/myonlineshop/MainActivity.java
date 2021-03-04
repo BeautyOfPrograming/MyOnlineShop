@@ -118,7 +118,7 @@ public class MainActivity  extends AppCompatActivity {
                             loading.dismiss();
 
                             Intent intent = new Intent(MainActivity.this, HomeActivity.class);
-
+                            Prevelant.currentlyUsers = users;
                             startActivity(intent);
 
                         }

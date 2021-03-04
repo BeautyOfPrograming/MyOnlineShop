@@ -20,6 +20,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -31,6 +32,8 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import io.paperdb.Paper;
@@ -39,6 +42,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
     private AppBarConfiguration mAppBarConfiguration;
     public DatabaseReference productReference;
+    public RecyclerView recyclerView;
+    public RecyclerView.LayoutManager layoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +86,13 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         textView.setText(Prevelant.currentlyUsers.getUser());
 
 
+
+        recyclerView = findViewById(R.id.main_recycler);
+        recyclerView.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
 
@@ -104,29 +116,32 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 .build();
 
 
-              FirebaseRecyclerAdapter<Products, productViewHolder> adapter = new FirebaseRecyclerAdapter<Products, productViewHolder>(options) {
-                  @Override
-                  protected void onBindViewHolder(@NonNull productViewHolder holder, int position, @NonNull Products model) {
+        FirebaseRecyclerAdapter<Products, productViewHolder> adapter = new FirebaseRecyclerAdapter<Products, productViewHolder>(options) {
+            @Override
+            protected void onBindViewHolder(@NonNull productViewHolder holder, int position, @NonNull Products model) {
 
 
-                      holder.txtProductPrice.setText(model.getPname());
-                      holder.txtProductDescription.setText(model.getDescription());
-                      holder.txtProductPrice.setText(model.getPrice());
-                  }
+                holder.txtProductPrice.setText(model.getPname());
+                holder.txtProductDescription.setText(model.getDescription());
+                holder.txtProductPrice.setText(model.getPrice());
+                Picasso.get().load(model.getImage()).into(holder.imageView);
+            }
 
-                  @NonNull
-                  @Override
-                  public productViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            @NonNull
+            @Override
+            public productViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-                      View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_items_layout,parent,false);
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_items_layout, parent, false);
 
-                      productViewHolder holder =  new productViewHolder(view);
+                productViewHolder holder = new productViewHolder(view);
 
 
-                      return holder;
-                  }
-              };
+                return holder;
+            }
+        };
 
+        recyclerView.setAdapter(adapter);
+        adapter.startListening();
     }
 
     @Override

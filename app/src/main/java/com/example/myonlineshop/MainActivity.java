@@ -13,7 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myonlineshop.model.Users;
-import com.example.myonlineshop.prevelant.Prevelant;
+import com.example.myonlineshop.prevelant.Prevalent;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -67,8 +67,8 @@ public class MainActivity  extends AppCompatActivity {
 
 
 
-        String phone = Paper.book().read(Prevelant.userPhone);
-        String pass = Paper.book().read(Prevelant.userPassword);
+        String phone = Paper.book().read(Prevalent.userPhone);
+        String pass = Paper.book().read(Prevalent.userPassword);
 
 
         if (phone!=""&& pass!=""){
@@ -118,7 +118,7 @@ public class MainActivity  extends AppCompatActivity {
                             loading.dismiss();
 
                             Intent intent = new Intent(MainActivity.this, HomeActivity.class);
-                            Prevelant.currentlyUsers = users;
+                            Prevalent.currentOnlineUser = users;
                             startActivity(intent);
 
                         }

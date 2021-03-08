@@ -14,7 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myonlineshop.model.Users;
-import com.example.myonlineshop.prevelant.Prevelant;
+import com.example.myonlineshop.prevelant.Prevalent;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -130,8 +130,8 @@ public class LoginActivity extends AppCompatActivity {
 
         if (checkBox.isChecked()) {
 
-            Paper.book().write(Prevelant.userPhone, phone);
-            Paper.book().write(Prevelant.userPassword, password);
+            Paper.book().write(Prevalent.userPhone, phone);
+            Paper.book().write(Prevalent.userPassword, password);
         }
 
         final DatabaseReference databaseReference;
@@ -171,7 +171,7 @@ public class LoginActivity extends AppCompatActivity {
 
                                 Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
 
-                                 Prevelant.currentlyUsers = users;
+                                 Prevalent.currentOnlineUser = users;
                                 startActivity(intent);
 
                             }

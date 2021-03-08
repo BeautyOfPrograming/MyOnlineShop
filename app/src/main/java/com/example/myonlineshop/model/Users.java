@@ -2,16 +2,20 @@ package com.example.myonlineshop.model;
 
 public class Users {
 
-    private  String pass, phone,user;
+    private  String pass, phone,user,image,address ;
 
     public Users() {
     }
 
-    public Users(String pass, String phone, String user) {
+
+    public Users(String pass, String phone, String user, String image, String address) {
         this.pass = pass;
         this.phone = phone;
         this.user = user;
+        this.image = image;
+        this.address = address;
     }
+
 
     public String getPass() {
         return pass;
@@ -35,5 +39,21 @@ public class Users {
 
     public void setUser(String user) {
         this.user = user;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

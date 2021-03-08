@@ -28,6 +28,9 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+
+
+
     }
     kotlinOptions {
         jvmTarget = '1.8'
@@ -87,9 +90,13 @@ dependencies {
 
     // crop image
 
-//    implementation 'com.theartofdev.edmodo:android-image-cropper:2.8.0'
 
 
+    implementation 'com.github.CanHub:Android-Image-Cropper:2.1.1' ///
+//    implementation 'com.github.yalantis:ucrop:2.2.6' // /
+
+
+  implementation  'com.cepheuen.elegant-number-button:lib:1.0.2'
 
 }
 apply plugin: 'com.google.gms.google-services'

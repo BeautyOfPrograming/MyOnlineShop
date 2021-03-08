@@ -2,7 +2,6 @@ package com.example.myonlineshop;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.myonlineshop.model.Products;
-import com.example.myonlineshop.prevelant.Prevelant;
+import com.example.myonlineshop.prevelant.Prevalent;
 import com.example.myonlineshop.viewHolder.productViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -82,9 +81,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         View view = navigationView.getHeaderView(0);
         TextView textView = view.findViewById(R.id.user_profile_name);
-        CircleImageView imageView = view.findViewById(R.id.uesr_profile_image);
-        textView.setText(Prevelant.currentlyUsers.getUser());
+        CircleImageView profileImagView = view.findViewById(R.id.uesr_profile_image);
+        textView.setText(Prevalent.currentOnlineUser.getUser());
 
+        Picasso.get().load(Prevalent.currentOnlineUser.getImage()).placeholder(R.drawable.profile).into(profileImagView);
 
 
         recyclerView = findViewById(R.id.main_recycler);
@@ -125,6 +125,17 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 holder.txtProductDescription.setText(model.getDescription());
                 holder.txtProductPrice.setText(model.getPrice());
                 Picasso.get().load(model.getImage()).into(holder.imageView);
+
+
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        Intent intent  = new Intent(HomeActivity.this,DetailsActivity.class);
+                        intent.putExtra("pid",model.getPid());
+                        startActivity(intent);
+                    }
+                });
             }
 
             @NonNull

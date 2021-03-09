@@ -76,12 +76,12 @@ public class DetailsActivity extends AppCompatActivity {
         SimpleDateFormat currentlyTimeFormat = new SimpleDateFormat("HH:mm:ss a");
         saveCurrentlyTime = currentlyTimeFormat.format(calendar.getTime());
 
-        final DatabaseReference cartlistRef  = FirebaseDatabase.getInstance().getReference().child("Cart List");
+         DatabaseReference cartlistRef  = FirebaseDatabase.getInstance().getReference().child("Cart List");
 
         final HashMap<String,Object> map = new HashMap<>();
         map.put("pid",productId);
-        map.put("pname",productName);
-        map.put("price",productPrice);
+        map.put("pname",productName.getText().toString());
+        map.put("price",productPrice.getText().toString());
         map.put("date",saveCurrentlyDate);
         map.put("time ",saveCurrentlyTime);
         map.put("quantity",elegantNumberButton.getNumber());

@@ -79,11 +79,13 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         // Displaying UserName on Navigation Menu
 
+
+//        Prevalent  prevalent =
+
         View view = navigationView.getHeaderView(0);
         TextView textView = view.findViewById(R.id.user_profile_name);
         CircleImageView profileImagView = view.findViewById(R.id.uesr_profile_image);
         textView.setText(Prevalent.currentOnlineUser.getUser());
-
         Picasso.get().load(Prevalent.currentOnlineUser.getImage()).placeholder(R.drawable.profile).into(profileImagView);
 
 

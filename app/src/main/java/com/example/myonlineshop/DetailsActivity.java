@@ -87,8 +87,9 @@ public class DetailsActivity extends AppCompatActivity {
         map.put("quantity",elegantNumberButton.getNumber());
         map.put("discount","");
 
-        cartlistRef.child("User View").child(Prevalent.currentOnlineUser.getPhone()).child("Products")
-                .child(productId).child(productId).updateChildren(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+        cartlistRef.child("User View").child(Prevalent.currentOnlineUser.getPhone())
+                .child("Products").child(productId)
+                .updateChildren(map).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
 
@@ -96,7 +97,7 @@ public class DetailsActivity extends AppCompatActivity {
 
 
                     cartlistRef.child("Admin View").child(Prevalent.currentOnlineUser.getPhone()).child("Products")
-                            .child(productId).child(productId).updateChildren(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            .child(productId).updateChildren(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
 

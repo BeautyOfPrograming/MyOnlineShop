@@ -110,15 +110,21 @@ public class MainActivity  extends AppCompatActivity {
 
                     Users users = snapshot.child("Users").child(phone).getValue(Users.class);
 
+
+
+                    Prevalent.currentOnlineUser = users;
+
                     if (users.getPhone().equals(phone)) {
 
                         if (users.getPass().equals(password)) {
 
-                            Toast.makeText(MainActivity.this, "Loged in successfully...", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, users.getUser() + " Loged in successfully...", Toast.LENGTH_SHORT).show();
                             loading.dismiss();
 
                             Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+
                             Prevalent.currentOnlineUser = users;
+
                             startActivity(intent);
 
                         }

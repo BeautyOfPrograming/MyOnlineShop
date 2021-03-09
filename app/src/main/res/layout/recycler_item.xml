@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <RelativeLayout
+
+            android:id="@+id/r1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:padding="15dp"
+            >
+
+
+            <TextView
+                android:id="@+id/product_name"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:text="product name"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/product_quantity"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_margin="15dp"
+                android:text="product quantity"
+                android:textAlignment="textEnd"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/product_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/product_quantity"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="15dp"
+                android:text="product price"
+                android:textAlignment="center"
+                android:layout_marginTop="10dp"
+                android:textSize="20sp" />
+
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

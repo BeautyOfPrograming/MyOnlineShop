@@ -15,25 +15,36 @@
         android:text="Total Price ="
         android:textSize="15sp"
 
-      />
+        />
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/totalprice"
         android:layout_above="@id/next_process_btn"
+        android:layout_below="@id/totalprice" />
+
+    <TextView
+        android:id="@+id/congrulation_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:text="Congratulation your order has been accepted and you item will be at your door step."
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary"
+        android:visibility="gone"
         />
+
 
     <Button
 
         android:id="@+id/next_process_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:background="@color/colorPrimary"
         android:text="Next"
-        android:textSize="15sp"
-        android:layout_alignParentBottom="true"/>
+        android:textSize="15sp" />
 
 </RelativeLayout>

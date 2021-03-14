@@ -108,7 +108,7 @@ public class ConfirmFinalOrderActivity extends AppCompatActivity {
 
         key = saveCurrentlyDate + saveCurrentlyTime;
 
-        final DatabaseReference ProductsRef = FirebaseDatabase.getInstance().getReference().child("Orders");
+        final DatabaseReference ProductsRef = FirebaseDatabase.getInstance().getReference().child("Orders").child(Prevalent.currentOnlineUser.getPhone());
 
         HashMap<String, Object> orderMap = new HashMap<>();
 
@@ -128,7 +128,7 @@ public class ConfirmFinalOrderActivity extends AppCompatActivity {
                 if (task.isSuccessful()){
 
                     FirebaseDatabase.getInstance().getReference().child("Cart List")
-                            .child("View view")
+                            .child("User View")
                             .child(Prevalent.currentOnlineUser.getPhone())
                             .removeValue()
                             .addOnCompleteListener(new OnCompleteListener<Void>() {

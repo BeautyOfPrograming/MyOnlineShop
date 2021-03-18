@@ -13,12 +13,29 @@ public class AdminCategoryActivity extends AppCompatActivity {
     private ImageView tShirts, sportsTShirts, femaleDresses, sweathers;
     private ImageView glasses, hatsCaps, walletsBagsPurses, shoes;
     private ImageView headPhonesHandFree, Laptops, watches, mobilePhones;
-    private Button logOutBtn, checkOrdrsBtn;
+    private Button logOutBtn, checkOrdrsBtn, maintainBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_category);
+
+
+        maintainBtn = findViewById(R.id.maintainBtn);
+
+        maintainBtn.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        Intent intent = new Intent(AdminCategoryActivity.this, MainActivity.class);
+                        intent.putExtra("Admin","Admin");
+                        startActivity(intent);
+
+
+                    }
+                }
+        );
 
         checkOrdrsBtn = findViewById(R.id.check_new_orders);
         logOutBtn = findViewById(R.id.logOut);

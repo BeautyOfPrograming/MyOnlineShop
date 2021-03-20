@@ -160,6 +160,7 @@ public class LoginActivity extends AppCompatActivity {
                                 loading.dismiss();
 
                                 Intent intent = new Intent(LoginActivity.this, AdminCategoryActivity.class);
+                                intent.putExtra("Admin", "Admin");
 
                                 startActivity(intent);
 
@@ -168,10 +169,11 @@ public class LoginActivity extends AppCompatActivity {
 
                                 Prevalent.currentOnlineUser = users;
 
-                                Toast.makeText(LoginActivity.this, users.getUser()+"Logged in successfully...", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this, users.getUser() + "Logged in successfully...", Toast.LENGTH_SHORT).show();
                                 loading.dismiss();
 
                                 Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+
 
                                 startActivity(intent);
 

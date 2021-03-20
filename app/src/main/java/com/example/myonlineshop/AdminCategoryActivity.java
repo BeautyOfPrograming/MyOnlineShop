@@ -28,7 +28,7 @@ public class AdminCategoryActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
 
-                        Intent intent = new Intent(AdminCategoryActivity.this, MainActivity.class);
+                        Intent intent = new Intent(AdminCategoryActivity.this, HomeActivity.class);
                         intent.putExtra("Admin","Admin");
                         startActivity(intent);
 

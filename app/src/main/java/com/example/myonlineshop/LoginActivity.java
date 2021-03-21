@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.myonlineshop.admin.AdminCategoryActivity;
 import com.example.myonlineshop.model.Users;
 import com.example.myonlineshop.prevelant.Prevalent;
 import com.google.firebase.database.DataSnapshot;
@@ -33,6 +34,7 @@ public class LoginActivity extends AppCompatActivity {
 
     EditText inputPhone;
     EditText inputPass;
+    TextView forgetPassword;
     ProgressDialog loading;
 
     private static String parentDnName = "Users";
@@ -52,8 +54,20 @@ public class LoginActivity extends AppCompatActivity {
 
         checkBox = findViewById(R.id.app_checkbox);
 
+        forgetPassword = findViewById(R.id.app_forget_password);
+        forgetPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                Intent intent = new Intent(LoginActivity.this,ForgetPassword.class);
+                intent.putExtra("login","check");
+                startActivity(intent);
+            }
+        });
         admin = findViewById(R.id.app_admin);
         notadmin = findViewById(R.id.app_not_admin);
+
 
         Paper.init(getApplicationContext());
 

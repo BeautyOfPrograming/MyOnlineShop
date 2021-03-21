@@ -1,4 +1,4 @@
-package com.example.myonlineshop;
+package com.example.myonlineshop.admin;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.myonlineshop.R;
 import com.example.myonlineshop.model.Cart;
 import com.example.myonlineshop.prevelant.Prevalent;
 import com.example.myonlineshop.viewHolder.CartViewHolder;

@@ -1,4 +1,4 @@
-package com.example.myonlineshop;
+package com.example.myonlineshop.admin;
 
 import android.content.Intent;
 
@@ -8,6 +8,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.myonlineshop.HomeActivity;
+import com.example.myonlineshop.MainActivity;
+import com.example.myonlineshop.R;
 
 public class AdminCategoryActivity extends AppCompatActivity {
     private ImageView tShirts, sportsTShirts, femaleDresses, sweathers;

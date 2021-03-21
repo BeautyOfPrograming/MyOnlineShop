@@ -1,4 +1,4 @@
-package com.example.myonlineshop;
+package com.example.myonlineshop.admin;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.myonlineshop.R;
 import com.example.myonlineshop.model.AdminOrders;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;

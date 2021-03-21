@@ -9,16 +9,14 @@ import android.view.View;
 import android.view.Menu;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.myonlineshop.model.Cart;
+import com.example.myonlineshop.admin.MaintainActivity;
 import com.example.myonlineshop.model.Products;
 import com.example.myonlineshop.prevelant.Prevalent;
 import com.example.myonlineshop.viewHolder.productViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;

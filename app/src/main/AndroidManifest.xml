@@ -11,10 +11,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true">
-        <activity android:name=".MaintainActivity"></activity>
+        <activity android:name=".ForgetPassword"></activity>
+        <activity android:name=".admin.MaintainActivity" />
         <activity android:name=".SearchActivity" />
-        <activity android:name=".AdminUserProductActivity" />
-        <activity android:name=".AdminNewOrderActivity" />
+        <activity android:name=".admin.AdminUserProductActivity" />
+        <activity android:name=".admin.AdminNewOrderActivity" />
         <activity android:name=".ConfirmFinalOrderActivity" />
         <activity android:name=".CartActivity" />
         <activity android:name=".DetailsActivity" />
@@ -22,9 +23,9 @@
             android:name=".HomeActivity"
             android:label="@string/title_activity_home"
             android:theme="@style/Theme.MyOnlineShop.NoActionBar" />
-        <activity android:name=".AdminCategoryActivity" />
+        <activity android:name=".admin.AdminCategoryActivity" />
         <activity android:name=".SettinsActivity" />
-        <activity android:name=".AdminAddNewProductActivity" />
+        <activity android:name=".admin.AdminAddNewProductActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity">

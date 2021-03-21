@@ -24,7 +24,7 @@ import java.util.HashMap;
 
 public class MaintainActivity extends AppCompatActivity {
 
-    private Button applyChanges;
+    private Button applyChanges, deleteThisProduct;
     private EditText name, price, description;
     private String productId = "";
     private ImageView image;
@@ -44,6 +44,16 @@ public class MaintainActivity extends AppCompatActivity {
         price = findViewById(R.id.product_maintain_price);
         description = findViewById(R.id.product_maintain_description);
         image = findViewById(R.id.product_maintain_image);
+        deleteThisProduct = findViewById(R.id.product_delete_apply_btn);
+        deleteThisProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                removeProduct();
+
+
+            }
+        });
 
         applyChanges = findViewById(R.id.product_maintain_apply);
 
@@ -55,6 +65,24 @@ public class MaintainActivity extends AppCompatActivity {
 
 
                 apply();
+            }
+        });
+
+    }
+
+    private void removeProduct() {
+
+
+        productRef.removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+
+                Toast.makeText(MaintainActivity.this, "This product is deleted successfully", Toast.LENGTH_SHORT).show();
+
+
+                startActivity(new Intent(MaintainActivity.this, AdminCategoryActivity.class));
+                finish();
+
             }
         });
 
@@ -92,8 +120,14 @@ public class MaintainActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<Void> task) {
 
 
-                    startActivity(new Intent(MaintainActivity.this,AdminCategoryActivity.class));
-                    finish();
+                    if (task.isSuccessful()) {
+
+
+                        Toast.makeText(MaintainActivity.this, "Your changes are applied successfully", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(MaintainActivity.this, AdminCategoryActivity.class));
+                        finish();
+                    }
+
 
                 }
             });

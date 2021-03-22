@@ -31,6 +31,7 @@ public class ResetPassword extends AppCompatActivity {
     private TextView pageTitle, ask_enter_questions;
     private EditText question1, question2, findphonenumber;
     private Button verify;
+    private   String answer1,answer2;
 
 
     @Override
@@ -56,6 +57,7 @@ public class ResetPassword extends AppCompatActivity {
         findphonenumber.setVisibility(View.GONE);
 
 
+
         if (check.equals("login")) {
 
             findphonenumber.setVisibility(View.VISIBLE);
@@ -73,8 +75,8 @@ public class ResetPassword extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
 
-                    String answer1 = question1.getText().toString().toLowerCase();
-                    String answer2 = question2.getText().toString().toLowerCase();
+                     answer1 = question1.getText().toString().toLowerCase();
+                     answer2 = question2.getText().toString().toLowerCase();
 
                     if (TextUtils.isEmpty(answer1) && TextUtils.isEmpty(answer2)) {
 
@@ -94,13 +96,13 @@ public class ResetPassword extends AppCompatActivity {
     private void saveQuestionsToDataBase() {
 
 
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference()
+     final   DatabaseReference reference = FirebaseDatabase.getInstance().getReference()
                 .child("Users")
                 .child(Prevalent.currentOnlineUser.getPhone());
 
         HashMap<String, Object> userdataMap = new HashMap<>();
-        userdataMap.put("answer1", question1);
-        userdataMap.put("answer2", question2);
+        userdataMap.put("answer1", answer1);
+        userdataMap.put("answer2", answer2);
 
 
         reference.child("Security Questions").updateChildren(userdataMap).addOnCompleteListener(new OnCompleteListener<Void>() {

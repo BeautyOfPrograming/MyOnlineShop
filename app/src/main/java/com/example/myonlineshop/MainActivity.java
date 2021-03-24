@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -14,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.myonlineshop.model.Users;
 import com.example.myonlineshop.prevelant.Prevalent;
+import com.example.myonlineshop.sellers.SellerActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,6 +30,7 @@ public class MainActivity  extends AppCompatActivity {
 
     private Button joinNowBtn,singNowbtn;
 
+    private TextView sellerBegin;
     ProgressDialog loading;
 
     @Override
@@ -40,8 +43,19 @@ public class MainActivity  extends AppCompatActivity {
 
         joinNowBtn = findViewById(R.id.sign_up_now_btn);
         singNowbtn = findViewById(R.id.sign_in_now_btn);
+        sellerBegin = findViewById(R.id.become_seller);
 
          loading =  new ProgressDialog(this);
+
+        sellerBegin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(MainActivity.this, SellerActivity.class);
+
+                startActivity(intent);
+            }
+        });
 
         singNowbtn.setOnClickListener(new View.OnClickListener() {
             @Override

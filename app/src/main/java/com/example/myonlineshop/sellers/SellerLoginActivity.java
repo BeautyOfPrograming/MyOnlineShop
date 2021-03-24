@@ -7,24 +7,24 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.myonlineshop.MainActivity;
 import com.example.myonlineshop.R;
 
-public class SellerActivity extends AppCompatActivity {
+public class SellerLoginActivity extends AppCompatActivity {
 
-    private Button seller_already_btn;
+    private Button do_not_have_account;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_seller);
-        seller_already_btn = findViewById(R.id.seller_already_account);
-        seller_already_btn.setOnClickListener(new View.OnClickListener() {
+        setContentView(R.layout.activity_seller_login);
+
+        do_not_have_account = findViewById(R.id.do_not_have_account);
+
+        do_not_have_account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(SellerActivity.this, SellerLoginActivity.class);
-
+                Intent intent = new Intent(SellerLoginActivity.this,SellerActivity.class);
                 startActivity(intent);
             }
         });

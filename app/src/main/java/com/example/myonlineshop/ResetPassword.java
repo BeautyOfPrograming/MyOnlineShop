@@ -241,9 +241,9 @@ public class ResetPassword extends AppCompatActivity {
 
                     Toast.makeText(ResetPassword.this, "You have answered Security Questions Successfully", Toast.LENGTH_SHORT).show();
 
-                    Intent inten = new Intent(ResetPassword.this, HomeActivity.class);
+                    Intent intent = new Intent(ResetPassword.this, HomeActivity.class);
 
-                    startActivity(inten);
+                    startActivity(intent);
 
                 }
 

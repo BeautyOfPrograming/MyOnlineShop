@@ -170,7 +170,7 @@ public class LoginActivity extends AppCompatActivity {
                             if (parentDnName.equals("Admins")) {
 
 
-                                Toast.makeText(LoginActivity.this, "welcome admin Loged in successfully...", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this, "welcome admin Logged in successfully...", Toast.LENGTH_SHORT).show();
                                 loading.dismiss();
 
                                 Intent intent = new Intent(LoginActivity.this, AdminCategoryActivity.class);

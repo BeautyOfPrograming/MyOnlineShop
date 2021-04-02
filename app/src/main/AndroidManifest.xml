@@ -11,8 +11,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true">
-        <activity android:name=".sellers.SellerLoginActivity"></activity>
-        <activity android:name=".sellers.SellerActivity" />
+        <activity
+            android:name=".sellers.SellerHomeActivity"
+            android:label="@string/title_activity_seller_home"></activity>
+        <activity android:name=".sellers.SellerLoginActivity" />
+        <activity android:name=".sellers.SellerRegisterActivity" />
         <activity android:name=".ResetPassword" />
         <activity android:name=".admin.MaintainActivity" />
         <activity android:name=".SearchActivity" />

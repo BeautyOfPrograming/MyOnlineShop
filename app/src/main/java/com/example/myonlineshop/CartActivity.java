@@ -47,6 +47,7 @@ public class CartActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
 
+
         totaPrice = findViewById(R.id.totalprice);
 
         next = findViewById(R.id.next_process_btn);

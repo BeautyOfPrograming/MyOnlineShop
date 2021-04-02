@@ -61,13 +61,23 @@ dependencies {
 
 
     // Import the BoM for the Firebase platform
-    implementation platform('com.google.firebase:firebase-bom:26.5.0')
+    implementation platform('com.google.firebase:firebase-bom:26.8.0')
 
     // Declare the dependency for the Realtime Database library
     // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation 'com.google.firebase:firebase-database'
     implementation 'com.google.firebase:firebase-storage'
-    implementation 'com.google.firebase:firebase-storage'
+
+
+
+
+//    implementation 'com.google.firebase:firebase-auth'
+//////dfgdf
+    implementation 'com.google.firebase:firebase-auth:15.0.0'
+//jnjn
+
+
+
     // FirebaseUI for Firebase Realtime Database
     implementation 'com.firebaseui:firebase-ui-database:7.1.1'
 
@@ -98,5 +108,11 @@ dependencies {
 
   implementation  'com.cepheuen.elegant-number-button:lib:1.0.2'
 
+
+
+
+
+
+    implementation 'com.google.firebase:firebase-auth:16.0.2'
 }
 apply plugin: 'com.google.gms.google-services'

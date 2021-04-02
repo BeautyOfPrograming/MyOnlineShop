@@ -60,11 +60,9 @@ public class ResetPassword extends AppCompatActivity {
 
         findphonenumber.setVisibility(View.GONE);
 
-
         if (check.equals("login")) {
 
             findphonenumber.setVisibility(View.VISIBLE);
-
 
             verify.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -108,9 +106,9 @@ public class ResetPassword extends AppCompatActivity {
     private void verifyUser() {
 
         String phone = findphonenumber.getText().toString();
-
         String answer1 = question1.getText().toString().toLowerCase();
         String answer2 = question2.getText().toString().toLowerCase();
+
 
         if (TextUtils.isEmpty(phone)) {
 
@@ -142,7 +140,7 @@ public class ResetPassword extends AppCompatActivity {
 
 
                         String ans1 = snapshot.child("Security Questions").child("answer1").getValue().toString();
-                        String ans2 =  snapshot.child("Security Questions").child("answer2").getValue().toString();
+                        String ans2 = snapshot.child("Security Questions").child("answer2").getValue().toString();
 
 
                         if (!ans1.equals(answer1)) {
@@ -174,7 +172,7 @@ public class ResetPassword extends AppCompatActivity {
                                                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                                                     @Override
                                                     public void onComplete(@NonNull Task<Void> task) {
-                                                        if (task.isSuccessful()){
+                                                        if (task.isSuccessful()) {
 
 
                                                             Toast.makeText(ResetPassword.this, "Password is sat successfully", Toast.LENGTH_SHORT).show();
@@ -206,6 +204,7 @@ public class ResetPassword extends AppCompatActivity {
 
                     } else {
                         Toast.makeText(ResetPassword.this, "This user phone dose not exist", Toast.LENGTH_SHORT).show();
+
                     }
 
                 }
@@ -238,7 +237,6 @@ public class ResetPassword extends AppCompatActivity {
 
                 if (task.isSuccessful()) {
 
-
                     Toast.makeText(ResetPassword.this, "You have answered Security Questions Successfully", Toast.LENGTH_SHORT).show();
 
                     Intent intent = new Intent(ResetPassword.this, HomeActivity.class);
@@ -258,6 +256,8 @@ public class ResetPassword extends AppCompatActivity {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference()
                 .child("Users")
                 .child(Prevalent.currentOnlineUser.getPhone());
+
+
         reference.child("Security Questions").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

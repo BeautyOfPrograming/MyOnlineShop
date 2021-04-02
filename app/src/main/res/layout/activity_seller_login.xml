@@ -27,7 +27,7 @@
 
 
     <EditText
-        android:id="@+id/seller_email"
+        android:id="@+id/seller_email_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/seller_txt"
@@ -41,7 +41,7 @@
         android:id="@+id/seller_pass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/seller_email"
+        android:layout_below="@+id/seller_email_login"
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"
 
@@ -50,7 +50,7 @@
 
 
     <Button
-        android:id="@+id/seller_register"
+        android:id="@+id/seller_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/seller_pass"

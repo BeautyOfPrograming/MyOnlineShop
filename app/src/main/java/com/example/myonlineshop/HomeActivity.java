@@ -94,7 +94,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
 
 
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.activity_seller_nav_view);
         navigationView.setNavigationItemSelectedListener(HomeActivity.this);
 
 

@@ -65,7 +65,7 @@ public class DetailsActivity extends AppCompatActivity {
 
     private void addingToCartList() {
 
-        String saveCurrentlyDate ,saveCurrentlyTime;
+        String saveCurrentlyDate, saveCurrentlyTime;
 
         Calendar calendar = Calendar.getInstance();
 
@@ -76,16 +76,18 @@ public class DetailsActivity extends AppCompatActivity {
         SimpleDateFormat currentlyTimeFormat = new SimpleDateFormat("HH:mm:ss a");
         saveCurrentlyTime = currentlyTimeFormat.format(calendar.getTime());
 
-         DatabaseReference cartlistRef  = FirebaseDatabase.getInstance().getReference().child("Cart List");
+        DatabaseReference cartlistRef = FirebaseDatabase.getInstance().getReference().child("Cart List");
 
-        final HashMap<String,Object> map = new HashMap<>();
-        map.put("pid",productId);
-        map.put("pname",productName.getText().toString());
-        map.put("price",productPrice.getText().toString());
-        map.put("date",saveCurrentlyDate);
-        map.put("time ",saveCurrentlyTime);
-        map.put("quantity",elegantNumberButton.getNumber());
-        map.put("discount","");
+        final HashMap<String, Object> map = new HashMap<>();
+        map.put("pid", productId);
+        map.put("pname", productName.getText().toString());
+        map.put("price", productPrice.getText().toString());
+        map.put("date", saveCurrentlyDate);
+        map.put("time ", saveCurrentlyTime);
+        map.put("quantity", elegantNumberButton.getNumber());
+        map.put("discount", "");
+
+
 
         cartlistRef.child("User View").child(Prevalent.currentOnlineUser.getPhone())
                 .child("Products").child(productId)
@@ -93,8 +95,7 @@ public class DetailsActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
 
-                if (task.isSuccessful()){
-
+                if (task.isSuccessful()) {
 
                     cartlistRef.child("Admin View").child(Prevalent.currentOnlineUser.getPhone()).child("Products")
                             .child(productId).updateChildren(map).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -103,7 +104,7 @@ public class DetailsActivity extends AppCompatActivity {
 
                             Toast.makeText(DetailsActivity.this, "Product added to cart", Toast.LENGTH_SHORT).show();
 
-                            Intent intent = new Intent(DetailsActivity.this,HomeActivity.class);
+                            Intent intent = new Intent(DetailsActivity.this, HomeActivity.class);
                             startActivity(intent);
                         }
                     });
@@ -122,7 +123,7 @@ public class DetailsActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                if (snapshot.exists()){
+                if (snapshot.exists()) {
 
                     Products products = snapshot.getValue(Products.class);
                     productName.setText(products.getPname());
@@ -132,8 +133,6 @@ public class DetailsActivity extends AppCompatActivity {
                     Picasso.get().load(products.getImage()).into(productImage);
                 }
             }
-
-
 
 
             @Override

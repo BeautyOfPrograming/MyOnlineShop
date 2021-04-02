@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".sellers.SellerActivity">
+    tools:context=".sellers.SellerRegisterActivity">
 
     <com.rey.material.widget.ImageView
         android:id="@+id/seller_image"
@@ -74,7 +74,7 @@
 
 
     <EditText
-        android:id="@+id/seller_shop_business"
+        android:id="@+id/seller_shop_business_address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/seller_pass"
@@ -88,7 +88,7 @@
         android:id="@+id/seller_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/seller_shop_business"
+        android:layout_below="@id/seller_shop_business_address"
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"
         android:background="@android:color/holo_green_dark"

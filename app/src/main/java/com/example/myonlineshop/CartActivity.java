@@ -127,7 +127,7 @@ public class CartActivity extends AppCompatActivity {
 
                                                     if (task.isSuccessful()) {
 
-                                                        Toast.makeText(CartActivity.this, "The Product is removed successfuly from cart", Toast.LENGTH_SHORT).show();
+                                                        Toast.makeText(CartActivity.this, "The Product is removed successfully from cart", Toast.LENGTH_SHORT).show();
 
                                                         Intent intent = new Intent(CartActivity.this, HomeActivity.class);
                                                         startActivity(intent);
@@ -189,7 +189,7 @@ public class CartActivity extends AppCompatActivity {
 
                         totaPrice.setText("Shipping state  == Not Shipped");
 
-                        txtMsg.setText("Congratulation your order has been accepted and you item will be at your door step");
+                        txtMsg.setText("Congratulation your order has been accepted and your item will be at your door step");
 
                         recyclerView.setVisibility(View.GONE);
                         txtMsg.setVisibility(View.VISIBLE);

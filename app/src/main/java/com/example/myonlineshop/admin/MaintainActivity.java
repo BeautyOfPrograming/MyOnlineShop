@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.myonlineshop.R;
+import com.example.myonlineshop.sellers.SellerProductActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
@@ -81,7 +82,7 @@ public class MaintainActivity extends AppCompatActivity {
                 Toast.makeText(MaintainActivity.this, "This product is deleted successfully", Toast.LENGTH_SHORT).show();
 
 
-                startActivity(new Intent(MaintainActivity.this, AdminCategoryActivity.class));
+                startActivity(new Intent(MaintainActivity.this, SellerProductActivity.class));
                 finish();
 
             }
@@ -125,7 +126,7 @@ public class MaintainActivity extends AppCompatActivity {
 
 
                         Toast.makeText(MaintainActivity.this, "Your changes are applied successfully", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(MaintainActivity.this, AdminCategoryActivity.class));
+                        startActivity(new Intent(MaintainActivity.this, SellerProductActivity.class));
                         finish();
                     }
 

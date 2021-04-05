@@ -28,9 +28,9 @@
             android:name=".HomeActivity"
             android:label="@string/title_activity_home"
             android:theme="@style/Theme.MyOnlineShop.NoActionBar" />
-        <activity android:name=".admin.AdminCategoryActivity" />
+        <activity android:name=".sellers.SellerProductActivity" />
         <activity android:name=".SettinsActivity" />
-        <activity android:name=".admin.AdminAddNewProductActivity" />
+        <activity android:name=".sellers.SellerAddNewProductActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity">

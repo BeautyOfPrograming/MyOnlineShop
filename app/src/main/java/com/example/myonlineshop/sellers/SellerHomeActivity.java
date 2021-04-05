@@ -47,15 +47,10 @@ public class SellerHomeActivity extends AppCompatActivity {
                     return true;
 
 
-//                    case R.id.navigation_add:
-//                        final FirebaseAuth auth;
-//                        auth = FirebaseAuth.getInstance();
-//                        auth.signOut();
-//
-//                    case R.id.navigation_add:
-//                        final FirebaseAuth auth;
-//                        auth = FirebaseAuth.getInstance();
-//                        auth.signOut();
+                case R.id.navigation_add:
+                    Intent intentaddproduct = new Intent(SellerHomeActivity.this, SellerAddNewProductActivity.class);
+                    startActivity(intentaddproduct);
+                    return true;
 
 
             }

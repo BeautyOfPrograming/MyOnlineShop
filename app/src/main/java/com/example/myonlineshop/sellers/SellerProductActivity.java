@@ -14,51 +14,13 @@ public class SellerProductActivity extends AppCompatActivity {
     private ImageView tShirts, sportsTShirts, femaleDresses, sweathers;
     private ImageView glasses, hatsCaps, walletsBagsPurses, shoes;
     private ImageView headPhonesHandFree, Laptops, watches, mobilePhones;
-//    private Button logOutBtn, checkOrdrsBtn, maintainBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.seller_add_category);
+        setContentView(R.layout.seller_product_category);
 
 
-//        maintainBtn = findViewById(R.id.maintainBtn);
-//
-//        maintainBtn.setOnClickListener(
-//                new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//
-//                        Intent intent = new Intent(AdminCategoryActivity.this, HomeActivity.class);
-//                        intent.putExtra("Admin","Admin");
-//                        startActivity(intent);
-//
-//
-//                    }
-//                }
-//        );
-//
-//        checkOrdrsBtn = findViewById(R.id.check_new_orders);
-//        logOutBtn = findViewById(R.id.logOut);
-//        logOutBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(AdminCategoryActivity.this, MainActivity.class);
-//                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//                startActivity(intent);
-//                finish();
-//            }
-//        });
-//
-//
-//        checkOrdrsBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                Intent intent = new Intent(AdminCategoryActivity.this, AdminNewOrderActivity.class);
-//                startActivity(intent);
-//            }
-//        });
 
 
 

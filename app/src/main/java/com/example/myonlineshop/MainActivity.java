@@ -50,6 +50,7 @@ public class MainActivity  extends AppCompatActivity {
 
          loading =  new ProgressDialog(this);
 
+
         sellerBegin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -151,7 +152,7 @@ public class MainActivity  extends AppCompatActivity {
 
                         if (users.getPass().equals(password)) {
 
-                            Toast.makeText(MainActivity.this, users.getUser() + " Loged in successfully...", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, users.getUser() + " Logged in successfully...", Toast.LENGTH_SHORT).show();
                             loading.dismiss();
 
                             Intent intent = new Intent(MainActivity.this, HomeActivity.class);

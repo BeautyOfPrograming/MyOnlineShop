@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.myonlineshop.admin.AdminHomeActivity;
 import com.example.myonlineshop.sellers.SellerProductActivity;
 import com.example.myonlineshop.model.Users;
 import com.example.myonlineshop.prevelant.Prevalent;
@@ -60,8 +61,8 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
 
 
-                Intent intent = new Intent(LoginActivity.this,ResetPassword.class);
-                intent.putExtra("check","login");
+                Intent intent = new Intent(LoginActivity.this, ResetPassword.class);
+                intent.putExtra("check", "login");
                 startActivity(intent);
             }
         });
@@ -173,7 +174,7 @@ public class LoginActivity extends AppCompatActivity {
                                 Toast.makeText(LoginActivity.this, "welcome admin Logged in successfully...", Toast.LENGTH_SHORT).show();
                                 loading.dismiss();
 
-                                Intent intent = new Intent(LoginActivity.this, SellerProductActivity.class);
+                                Intent intent = new Intent(LoginActivity.this, AdminHomeActivity.class);
                                 intent.putExtra("Admin", "Admin");
 
                                 startActivity(intent);

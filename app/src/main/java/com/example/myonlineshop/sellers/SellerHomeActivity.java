@@ -1,25 +1,45 @@
 package com.example.myonlineshop.sellers;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.myonlineshop.MainActivity;
 import com.example.myonlineshop.R;
+import com.example.myonlineshop.admin.AdminCheckNewProductsActivity;
+import com.example.myonlineshop.model.Products;
+import com.example.myonlineshop.viewHolder.ProductViewHolder;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.squareup.picasso.Picasso;
 
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class SellerHomeActivity extends AppCompatActivity {
+
+
+    private RecyclerView recyclerView;
+    private RecyclerView.LayoutManager layoutManager;
+    private DatabaseReference unverifiedProductsRef;
 
     private BottomNavigationView.OnNavigationItemSelectedListener listener = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -78,7 +98,87 @@ public class SellerHomeActivity extends AppCompatActivity {
 //        NavigationUI.setupWithNavController(navView, navController);
 
 
+        recyclerView = findViewById(R.id.seller_home_recycler_view);
+
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(layoutManager);
+
+        unverifiedProductsRef = FirebaseDatabase.getInstance().getReference().child("Products");
+
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
 
+
+        FirebaseRecyclerOptions<Products> unverfiedProducts = new FirebaseRecyclerOptions.Builder<Products>()
+                .setQuery(unverifiedProductsRef.orderByChild("sid").equalTo(FirebaseAuth.getInstance().getCurrentUser().getUid()), Products.class)
+                .build();
+
+
+        FirebaseRecyclerAdapter<Products, ProductViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Products, ProductViewHolder>(unverfiedProducts) {
+            @Override
+            protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull Products model) {
+
+
+                holder.txtProductPrice.setText(model.getPname());
+                holder.txtProductDescription.setText(model.getDescription());
+                holder.txtProductPrice.setText(model.getPrice());
+                Picasso.get().load(model.getImage()).into(holder.imageView);
+
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+
+                        String id = model.getPid();
+
+                        CharSequence[] options = new CharSequence[]{
+                                "Yes",
+                                "No"
+
+                        };
+
+                        AlertDialog.Builder builder = new AlertDialog.Builder(AdminCheckNewProductsActivity.this);
+
+                        builder.setTitle("Do you want to approve this product, Are you sure");
+
+                        builder.setItems(options, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                                if (i == 0) {
+
+                                    changeProduct(id);
+
+                                } else if (i == 1) {
+
+
+                                }
+                            }
+                        });
+
+                        builder.show();
+                    }
+                });
+            }
+
+            @NonNull
+            @Override
+            public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_items_layout, parent, false);
+
+                ProductViewHolder holder = new ProductViewHolder(view);
+
+
+                return holder;
+            }
+        };
+
+        recyclerView.setAdapter(firebaseRecyclerAdapter);
+        firebaseRecyclerAdapter.startListening();
+
+    }
 }

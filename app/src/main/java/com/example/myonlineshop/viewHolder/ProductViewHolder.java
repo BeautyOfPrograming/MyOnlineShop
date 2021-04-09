@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.myonlineshop.Interface.ItemClickListener;
 import com.example.myonlineshop.R;
 
-public class productViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class ProductViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     public TextView txtProductName, txtProductDescription, txtProductPrice;
     public ImageView imageView;
@@ -18,7 +18,7 @@ public class productViewHolder extends RecyclerView.ViewHolder implements View.O
 
     public ItemClickListener listener;
 
-    public productViewHolder(@NonNull View itemView) {
+    public ProductViewHolder(@NonNull View itemView) {
         super(itemView);
         txtProductName = itemView.findViewById(R.id.product_item_name);
         txtProductDescription = itemView.findViewById(R.id.product_item_description);

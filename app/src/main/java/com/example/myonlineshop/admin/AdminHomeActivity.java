@@ -14,7 +14,7 @@ import com.example.myonlineshop.R;
 public class AdminHomeActivity extends AppCompatActivity {
 
 
-    private Button logOutBtn, checkOrdrsBtn, maintainBtn;
+    private Button logOutBtn, checkOrdrsBtn, maintainBtn, checkAndApproveProduct;
 
 
     @Override
@@ -24,6 +24,20 @@ public class AdminHomeActivity extends AppCompatActivity {
 
 
         maintainBtn = findViewById(R.id.maintainBtn);
+
+
+        checkAndApproveProduct = findViewById(R.id.check_approve_product_btn);
+        checkAndApproveProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                Intent intent = new Intent(AdminHomeActivity.this, AdminCheckNewProductsActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
 
         maintainBtn.setOnClickListener(
                 new View.OnClickListener() {

@@ -13,7 +13,7 @@ import android.widget.TextView;
 import com.example.myonlineshop.admin.MaintainActivity;
 import com.example.myonlineshop.model.Products;
 import com.example.myonlineshop.prevelant.Prevalent;
-import com.example.myonlineshop.viewHolder.productViewHolder;
+import com.example.myonlineshop.viewHolder.ProductViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -145,9 +145,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 .build();
 
 
-        FirebaseRecyclerAdapter<Products, productViewHolder> adapter = new FirebaseRecyclerAdapter<Products, productViewHolder>(options) {
+        FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter = new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull productViewHolder holder, int position, @NonNull Products model) {
+            protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull Products model) {
 
 
                 holder.txtProductPrice.setText(model.getPname());
@@ -184,11 +184,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
             @NonNull
             @Override
-            public productViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
                 View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_items_layout, parent, false);
 
-                productViewHolder holder = new productViewHolder(view);
+                ProductViewHolder holder = new ProductViewHolder(view);
 
 
                 return holder;

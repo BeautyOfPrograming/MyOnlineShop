@@ -154,7 +154,7 @@ public class SellerAddNewProductActivity extends AppCompatActivity {
 
 
         loading.setTitle("Adding new Product");
-        loading.setMessage("Dear Admin, please wait while we are adding new product...");
+        loading.setMessage("Dear Seller, please wait while we are adding new product...");
         loading.setCanceledOnTouchOutside(false);
         loading.show();
 

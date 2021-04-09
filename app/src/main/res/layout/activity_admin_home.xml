@@ -51,6 +51,24 @@
         android:textSize="20sp" />
 
 
+
+
+
+    <Button
+        android:id="@+id/check_approve_product_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/check_new_orders"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="31dp"
+        android:background="@color/colorPrimary"
+        android:text="Check and Approve products"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
+
+
     <Button
         android:id="@+id/logOut"
         android:layout_width="match_parent"

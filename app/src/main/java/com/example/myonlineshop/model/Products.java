@@ -2,13 +2,14 @@ package com.example.myonlineshop.model;
 
 public class Products {
 
-    String category, date, description,image,pid,pname,price,time;
+    String category, date, description, image, pid, pname, price, time, productState;
 
 
     public Products() {
     }
 
-    public Products(String category, String date, String description, String image, String pid, String pname, String price, String time) {
+
+    public Products(String category, String date, String description, String image, String pid, String pname, String price, String time, String productState) {
         this.category = category;
         this.date = date;
         this.description = description;
@@ -17,8 +18,8 @@ public class Products {
         this.pname = pname;
         this.price = price;
         this.time = time;
+        this.productState = productState;
     }
-
 
     public String getCategory() {
         return category;
@@ -82,5 +83,13 @@ public class Products {
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    public String getProductState() {
+        return productState;
+    }
+
+    public void setProductState(String productState) {
+        this.productState = productState;
     }
 }

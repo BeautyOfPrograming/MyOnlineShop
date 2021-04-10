@@ -14,9 +14,12 @@ import com.example.myonlineshop.MainActivity;
 import com.example.myonlineshop.R;
 import com.example.myonlineshop.admin.AdminCheckNewProductsActivity;
 import com.example.myonlineshop.model.Products;
+import com.example.myonlineshop.viewHolder.ItemViewHolder;
 import com.example.myonlineshop.viewHolder.ProductViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -72,6 +75,10 @@ public class SellerHomeActivity extends AppCompatActivity {
                     startActivity(intentaddproduct);
                     return true;
 
+                case R.id.navigation_home:
+                    Intent intent = new Intent(SellerHomeActivity.this, SellerHomeActivity.class);
+                    startActivity(intent);
+                    return true;
 
             }
 
@@ -118,14 +125,15 @@ public class SellerHomeActivity extends AppCompatActivity {
                 .build();
 
 
-        FirebaseRecyclerAdapter<Products, ProductViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Products, ProductViewHolder>(unverfiedProducts) {
+        FirebaseRecyclerAdapter<Products, ItemViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Products, ItemViewHolder>(unverfiedProducts) {
             @Override
-            protected void onBindViewHolder(@NonNull ProductViewHolder holder, int position, @NonNull Products model) {
+            protected void onBindViewHolder(@NonNull ItemViewHolder holder, int position, @NonNull Products model) {
 
 
                 holder.txtProductPrice.setText(model.getPname());
                 holder.txtProductDescription.setText(model.getDescription());
                 holder.txtProductPrice.setText(model.getPrice());
+                holder.txtProductStatus.setText(model.getProductState());
                 Picasso.get().load(model.getImage()).into(holder.imageView);
 
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -141,7 +149,7 @@ public class SellerHomeActivity extends AppCompatActivity {
 
                         };
 
-                        AlertDialog.Builder builder = new AlertDialog.Builder(AdminCheckNewProductsActivity.this);
+                        AlertDialog.Builder builder = new AlertDialog.Builder(SellerHomeActivity.this);
 
                         builder.setTitle("Do you want to approve this product, Are you sure");
 
@@ -151,7 +159,7 @@ public class SellerHomeActivity extends AppCompatActivity {
 
                                 if (i == 0) {
 
-                                    changeProduct(id);
+                                    deleteProduct(id);
 
                                 } else if (i == 1) {
 
@@ -167,10 +175,10 @@ public class SellerHomeActivity extends AppCompatActivity {
 
             @NonNull
             @Override
-            public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_items_layout, parent, false);
+            public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.seller_item_views, parent, false);
 
-                ProductViewHolder holder = new ProductViewHolder(view);
+                ItemViewHolder holder = new ItemViewHolder(view);
 
 
                 return holder;
@@ -180,5 +188,19 @@ public class SellerHomeActivity extends AppCompatActivity {
         recyclerView.setAdapter(firebaseRecyclerAdapter);
         firebaseRecyclerAdapter.startListening();
 
+    }
+
+    private void deleteProduct(String id) {
+
+
+        unverifiedProductsRef.child(id).removeValue()
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+
+                        Toast.makeText(SellerHomeActivity.this, "The product has been deleted successfully .", Toast.LENGTH_SHORT).show();
+
+                    }
+                });
     }
 }

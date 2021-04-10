@@ -89,7 +89,7 @@ public class AdminCheckNewProductsActivity extends AppCompatActivity {
 
                                 if (i == 0) {
 
-                                    changeProduct(id);
+                                    changeProductState(id);
 
                                 } else if (i == 1) {
 
@@ -119,7 +119,7 @@ public class AdminCheckNewProductsActivity extends AppCompatActivity {
         firebaseRecyclerAdapter.startListening();
     }
 
-    private void changeProduct(String id) {
+    private void changeProductState(String id) {
 
         unverifiedProductsRef.child(id).child("productState").setValue("Approved")
                 .addOnCompleteListener(new OnCompleteListener<Void>() {

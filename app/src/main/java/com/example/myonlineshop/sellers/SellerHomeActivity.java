@@ -76,8 +76,8 @@ public class SellerHomeActivity extends AppCompatActivity {
                     return true;
 
                 case R.id.navigation_home:
-                    Intent intent = new Intent(SellerHomeActivity.this, SellerHomeActivity.class);
-                    startActivity(intent);
+                    Intent intt = new Intent(SellerHomeActivity.this, SellerHomeActivity.class);
+                    startActivity(intt);
                     return true;
 
             }
